@@ -1,0 +1,13 @@
+---
+- name: Create deploy user
+  user: 'name={{sources_target_user}} shell=/bin/bash home=/home/{{sources_target_user}} state=present'
+
+- name: Sync API Repositary
+  sudo: yes
+  sudo_user: '{{sources_target_user}}'
+  git: 'repo={{sources_repo_be}} dest={{sources_target_dir}}/server version={{sources_version}}'
+
+- name: Sync UI Repositary
+  sudo: yes
+  sudo_user: '{{sources_target_user}}'
+  git: 'repo={{sources_repo_ui}} dest={{sources_target_dir}}/client version={{sources_version}}'

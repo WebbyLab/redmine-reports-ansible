@@ -1,0 +1,20 @@
+{
+    "redmine": {
+        "host"  : "YOUR.Redmine",
+        "apiKey": "APIKEY"
+    },
+    "mail": {
+        "from"     : "example@example.com",
+        "transport": "Sendmail",
+        "transportOptions": {}
+    },
+    "emailReport": {
+        "destinationEmails": []
+    },
+
+    "appUrl": "http://localhost:8080/api/v1",
+    "minLogTime": 30,
+
+    "staticPath": "../client/public/"
+
+}

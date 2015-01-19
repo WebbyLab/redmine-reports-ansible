@@ -1,0 +1,13 @@
+---
+- hosts: appservers
+  remote_user: "{{remote_user}}"
+  sudo: yes
+  gather_facts: false
+  roles:
+    - { role: webbylab.common, common_timezone: 'Europe/Kiev', common_hostname: '{{hostname}}'}
+    - { role: webbylab.exim4-sender, exim4_sender_hostname: '{{hostname}}' }
+    - webbylab.nodejs
+    - webbylab.mongodb
+    - webbylab.logrotate
+    - webbylab.nginx-proxy
+    - redmine-reports

@@ -1,0 +1,9 @@
+---
+- name: redmine-reports client dependencies install and app rebuild
+  sudo: yes
+  sudo_user: '{{sources_target_user}}'
+  command: '{{item}} chdir={{sources_target_dir}}/client'
+  with_items:
+     - npm install
+     - npm run bower_install
+     - npm run build

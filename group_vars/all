@@ -1,0 +1,21 @@
+---
+# common
+remote_user: root
+hostname: example.redmine-reports.com
+
+# nginx_proxy
+nginx_proxy_hostname: "RedmineReports"
+nginx_proxy_pass_locations: [{location: '/', proxy_pass: 'http://localhost:8080'}]
+
+# sources
+sources_repo_be: 'https://github.com/siavolt/redmine-reports-api.git'
+sources_repo_ui: 'https://github.com/siavolt/redmine-reports-ui.git'
+sources_target_user: redmine-reports
+sources_target_dir:  ~/redmine-reports
+sources_version:     master
+
+# logrotate
+logrotate_name: redmine-reports
+logrotate_logfile: '/home/redmine-reports/redmine-reports/logs/debug.log'
+logrotate__user:   redmine-reports
+logrotate__group:  redmine-reports

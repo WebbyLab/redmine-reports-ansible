@@ -1,0 +1,6 @@
+[appservers]
+your.server.com:22
+
+[appservers:vars]
+hostname=WRITE_HOSTNAME
+remote_user=WRITE_REMOTE_USER
