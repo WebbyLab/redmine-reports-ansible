@@ -9,4 +9,7 @@ vagrant up
 ssh-copy-id user@domain -p port
 
 ## Deploy project to production
+
+Change roles/config/redmine-reports/tamplates/config.json like in redmine-reports-api
+Change production file
 ansible-playbook site.yml -i production --ask-sudo-pass
