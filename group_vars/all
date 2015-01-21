@@ -19,3 +19,16 @@ logrotate_name: redmine-reports
 logrotate_logfile: '/home/redmine-reports/redmine-reports/logs/debug.log'
 logrotate__user:   redmine-reports
 logrotate__group:  redmine-reports
+
+# redmine
+redmine_host: your.redmine.com
+redmine_api_key: ad4t5yr23
+
+# Mail
+mail_from: "example@example.com"
+mail_destination_emails: ["test@mail.com"]
+mail_min_log_time: 30
+
+# Basic auth
+basic_auth_login:    test
+basic_auth_password: test

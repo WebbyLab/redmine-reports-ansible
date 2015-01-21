@@ -6,7 +6,7 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.box = "hashicorp/precise32"
-    config.vm.network :forwarded_port, host: 5000, guest: 8080
+    config.vm.network :forwarded_port, host: 5001, guest: 8080
 
     config.vm.provision "ansible" do |ansible|
         ansible.playbook = "site.yml"
