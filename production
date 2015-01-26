@@ -8,6 +8,7 @@ remote_user=WRITE_REMOTE_USER
 basic_auth_login=BASIC_AUTH_LOGIN
 basic_auth_password=BASIC_AUTH_PASSWORD
 
+redmine_url=YOUR_REDMINE_URL
 redmine_host=YOUR_REDMINE_HOST
 redmine_api_key=YOUR_REDMINE_API_KEY
 

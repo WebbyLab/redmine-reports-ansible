@@ -18,6 +18,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
         ansible.extra_vars = {
             hostname: "vagrant.redmine-reports.com",
+            nginx_proxy_listen_port: "80",
             remote_user: "vagrant"
         }
     end

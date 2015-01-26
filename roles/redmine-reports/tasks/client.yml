@@ -1,4 +1,9 @@
 ---
+- name: redmine-reports server configuration
+  sudo: yes
+  sudo_user: '{{sources_target_user}}'
+  template: src=ui_config.json.j2 dest={{sources_target_dir}}/client/etc/config.json
+
 - name: redmine-reports client dependencies install and app rebuild
   sudo: yes
   sudo_user: '{{sources_target_user}}'

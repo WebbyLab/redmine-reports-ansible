@@ -22,6 +22,7 @@ logrotate__group:  redmine-reports
 
 # redmine
 redmine_host: your.redmine.com
+redmine_url:  http://your.redmine.com/
 redmine_api_key: ad4t5yr23
 
 # Mail
