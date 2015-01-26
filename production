@@ -1,0 +1,17 @@
+[appservers]
+your.server.com:22
+
+[appservers:vars]
+hostname=WRITE_HOSTNAME
+remote_user=WRITE_REMOTE_USER
+
+basic_auth_login=BASIC_AUTH_LOGIN
+basic_auth_password=BASIC_AUTH_PASSWORD
+
+redmine_url=YOUR_REDMINE_URL
+redmine_host=YOUR_REDMINE_HOST
+redmine_api_key=YOUR_REDMINE_API_KEY
+
+mail_from=MAIL_FROM
+mail_destination_emails=ARRAY_DESTINATION_EMAILS
+mail_min_log_time=MINIMAL_LOG_TIME

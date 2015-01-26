@@ -1,0 +1,50 @@
+---
+- name: redmine-reports server dependencies install
+  sudo: yes
+  sudo_user: '{{sources_target_user}}'
+  command: npm install chdir={{sources_target_dir}}/server
+
+- name: redmine-reports server configuration
+  sudo: yes
+  sudo_user: '{{sources_target_user}}'
+  template: src=be_config.json.j2 dest={{sources_target_dir}}/server/etc/config.json
+
+- name: redmine-reports server configuration
+  sudo: yes
+  sudo_user: '{{sources_target_user}}'
+  template: src=users.htpasswd dest={{sources_target_dir}}/server/etc/users.htpasswd
+
+- name: CRON - add server to autostart
+  sudo: yes
+  sudo_user: '{{sources_target_user}}'
+  cron: special_time=reboot name='autostart forever' job='chdir {{sources_target_dir}}/server && npm start'
+
+- name: CRON - full synchronization
+  sudo: yes
+  sudo_user: '{{sources_target_user}}'
+  cron: "user={{sources_target_user}}
+         hour=3
+         name='full time entries synchronization'
+         job='/usr/bin/flock -n /tmp/fcj.lockfile {{sources_target_dir}}/server/bin/sync_time_entries.js --fullsync'"
+
+- name: CRON - inremental synchronization
+  sudo: yes
+  sudo_user: '{{sources_target_user}}'
+  cron: "user={{sources_target_user}}
+         minute=30
+         name='incremental time entries synchronization'
+         job='/usr/bin/flock -n /tmp/fcj.lockfile {{sources_target_dir}}/server/bin/sync_time_entries.js --sync'"
+
+- name: CRON - email reports
+  sudo: yes
+  sudo_user: '{{sources_target_user}}'
+  cron: "user={{sources_target_user}}
+         weekday=6
+         hour=5
+         name='synchronize time entries'
+         job='{{sources_target_dir}}/server/bin/send_report_to_email.js'"
+
+- name: restart server
+  sudo: yes
+  sudo_user: '{{sources_target_user}}'
+  command: npm restart chdir={{sources_target_dir}}/server
